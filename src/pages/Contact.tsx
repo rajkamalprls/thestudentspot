@@ -1,0 +1,369 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Send, Instagram, Linkedin, MessageSquare, Instagram as Telegram, Youtube } from 'lucide-react';
+
+const Contact: React.FC = () => {
+  const [formState, setFormState] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+    role: 'student',
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormState(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      setFormState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+        role: 'student',
+      });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 5000);
+    }, 1500);
+  };
+
+  return (
+    <div className="page-container">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
+        <p className="text-xl text-gray-600 max-w-4xl mb-12">
+          Have questions, suggestions, or want to collaborate with The Student Spot? 
+          We'd love to hear from you! Fill out the form below or reach out to us through our social media channels.
+        </p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        {/* Contact Form */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="bg-white rounded-xl shadow-md p-8">
+            <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
+            
+            {submitSuccess && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 rounded-lg">
+                Thank you for your message! We'll get back to you soon.
+              </div>
+            )}
+            
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formState.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  placeholder="John Doe"
+                />
+              </div>
+              
+              <div className="mb-4">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  placeholder="john@example.com"
+                />
+              </div>
+              
+              <div className="mb-4">
+                <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">
+                  I am a
+                </label>
+                <select
+                  id="role"
+                  name="role"
+                  value={formState.role}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                >
+                  <option value="student">Student</option>
+                  <option value="professional">Professional</option>
+                  <option value="recruiter">Recruiter/HR</option>
+                  <option value="educator">Educator</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div className="mb-4">
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formState.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  placeholder="How can we help you?"
+                />
+              </div>
+              
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formState.message}
+                  onChange={handleChange}
+                  required
+                  rows={6}
+                  className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                  placeholder="Type your message here..."
+                ></textarea>
+              </div>
+              
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className={`btn btn-primary w-full flex items-center justify-center ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+              >
+                {isSubmitting ? (
+                  <span>Sending...</span>
+                ) : (
+                  <>
+                    <Send size={18} className="mr-2" />
+                    Send Message
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+        </motion.div>
+
+        {/* Contact Info */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="bg-white rounded-xl shadow-md p-8 h-full">
+            <h2 className="text-2xl font-bold mb-6">Connect With Us</h2>
+            
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Community Channels</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <a 
+                      href="https://chat.whatsapp.com/LxA5xaAdlKp3nvZmIGxLcp" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center text-gray-700 hover:text-orange-600 transition-colors"
+                    >
+                      <MessageSquare className="w-5 h-5 mr-3" />
+                      <span>WhatsApp Community</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="https://whatsapp.com/channel/0029Vb6ft6072WTxJ5eMKA2I" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center text-gray-700 hover:text-orange-600 transition-colors"
+                    >
+                      <MessageSquare className="w-5 h-5 mr-3" />
+                      <span>WhatsApp Channel</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="https://t.me/thestudentspot" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center text-gray-700 hover:text-orange-600 transition-colors"
+                    >
+                      <Telegram className="w-5 h-5 mr-3" />
+                      <span>Telegram Channel</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Social Media</h3>
+                <ul className="space-y-4">
+                  <li>
+                    <a 
+                      href="https://www.instagram.com/the_studentspot/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center text-gray-700 hover:text-orange-600 transition-colors"
+                    >
+                      <Instagram className="w-5 h-5 mr-3" />
+                      <span>Instagram</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="https://www.linkedin.com/company/thestudentspot/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center text-gray-700 hover:text-orange-600 transition-colors"
+                    >
+                      <Linkedin className="w-5 h-5 mr-3" />
+                      <span>LinkedIn</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a 
+                      href="https://youtube.com/@thestudentspot" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center text-gray-700 hover:text-orange-600 transition-colors"
+                    >
+                      <Youtube className="w-5 h-5 mr-3" />
+                      <span>YouTube</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Founder Contact</h3>
+                <p className="text-gray-600 mb-3">
+                  For direct inquiries, you can reach out to our founder:
+                </p>
+                <a 
+                  href="https://www.linkedin.com/in/rajkamalprls" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary inline-flex items-center"
+                >
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  Rajkamal Panthagani
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* FAQ Section */}
+      <motion.section 
+        className="mb-16"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="section-title mb-8">Frequently Asked Questions</h2>
+        
+        <div className="bg-white rounded-xl shadow-md p-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-lg font-semibold mb-3">How can I join The Student Spot community?</h3>
+              <p className="text-gray-600">
+                You can join our community by clicking on the "Join Community" button in the navigation menu, 
+                which will take you to our WhatsApp group. You can also follow us on social media to stay updated.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-3">Is The Student Spot only for students?</h3>
+              <p className="text-gray-600">
+                No, while our primary focus is on students and young professionals, we welcome anyone interested 
+                in learning, networking, and growing professionally in the tech space.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-3">How can I post a job opportunity?</h3>
+              <p className="text-gray-600">
+                If you're a recruiter or have job openings to share, please use the contact form on this page 
+                or reach out directly to our founder. We'll help you connect with talented candidates.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-3">Can I host a workshop for The Student Spot?</h3>
+              <p className="text-gray-600">
+                Absolutely! We're always looking for experts to share their knowledge. Please contact us with 
+                your workshop proposal, and we'll get back to you to discuss the details.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Newsletter Subscription */}
+      <motion.section 
+        className="bg-gradient-to-r from-orange-500 to-red-600 rounded-xl p-8 md:p-12 text-white"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="md:flex items-center justify-between">
+          <div className="mb-6 md:mb-0 md:w-2/3">
+            <h2 className="text-2xl font-bold mb-2">Subscribe to Our Newsletter</h2>
+            <p className="opacity-90">
+              Stay updated with the latest events, job opportunities, and resources by subscribing to our newsletter.
+            </p>
+          </div>
+          
+          <div className="md:w-1/3">
+            <form className="flex">
+              <input
+                type="email"
+                placeholder="Your email address"
+                className="p-3 rounded-l-lg w-full focus:outline-none text-gray-800"
+              />
+              <button
+                type="submit"
+                className="bg-gray-900 text-white px-4 py-3 rounded-r-lg hover:bg-gray-800 transition-colors"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+      </motion.section>
+    </div>
+  );
+};
+
+export default Contact;
