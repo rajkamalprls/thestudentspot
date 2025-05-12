@@ -1,113 +1,161 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Briefcase, Search, Filter, MapPin, Building, Calendar } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import {
+  Calendar,
+  Clock,
+  MapPin,
+  Users,
+  ExternalLink,
+  Filter,
+  ArrowRight
+} from 'lucide-react';
 
-// Mock job data - this would come from an API in a real application
-const jobsData = [
+// Mock events data - would come from an API in a real app
+const eventsData = [
   {
     id: 1,
-    title: 'Frontend Developer',
-    company: 'TechCorp',
-    location: 'Bangalore',
-    type: 'Full-time',
+    title: 'Web3 Development Workshop',
+    date: '2025-01-15',
+    time: '3:00 PM - 5:00 PM IST',
+    location: 'Online (Zoom)',
+    type: 'Workshop',
     category: 'Development',
-    postedDate: '2024-12-15',
-    description: 'Looking for a skilled Frontend Developer with experience in React, TypeScript, and modern CSS frameworks.',
-    requirements: ['3+ years of React experience', 'TypeScript proficiency', 'CSS-in-JS knowledge'],
-    applicationLink: '#'
+    speaker: 'Arjun Sharma, Blockchain Developer',
+    description: 'Learn the fundamentals of Web3 development and how to build decentralized applications using Ethereum.',
+    registrationLink: '#',
+    image: 'https://images.pexels.com/photos/8370752/pexels-photo-8370752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     id: 2,
-    title: 'UX/UI Designer',
-    company: 'DesignHub',
-    location: 'Remote',
-    type: 'Contract',
-    category: 'Design',
-    postedDate: '2024-12-14',
-    description: 'Seeking a creative UX/UI Designer to work on innovative digital products.',
-    requirements: ['Figma expertise', 'User research experience', 'Wireframing skills'],
-    applicationLink: '#'
+    title: 'Mastering Data Science with Python',
+    date: '2025-01-20',
+    time: '6:00 PM - 8:00 PM IST',
+    location: 'Hyderabad Tech Hub',
+    type: 'Workshop',
+    category: 'Data Science',
+    speaker: 'Priya Desai, Senior Data Scientist',
+    description: 'Hands-on workshop covering Python libraries for data analysis, visualization, and machine learning.',
+    registrationLink: '#',
+    image: 'https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     id: 3,
-    title: 'Data Scientist',
-    company: 'AnalyticsPro',
-    location: 'Hyderabad',
-    type: 'Full-time',
-    category: 'Data Science',
-    postedDate: '2024-12-10',
-    description: 'Join our data science team to build machine learning models and extract insights from complex datasets.',
-    requirements: ['Python', 'Machine Learning', 'SQL', 'Data visualization'],
-    applicationLink: '#'
+    title: 'Career Opportunities in AI',
+    date: '2025-01-25',
+    time: '4:00 PM - 5:30 PM IST',
+    location: 'Online (Google Meet)',
+    type: 'Webinar',
+    category: 'Career',
+    speaker: 'Rahul Mehta, AI Research Lead',
+    description: 'Explore various career paths and opportunities in the growing field of Artificial Intelligence.',
+    registrationLink: '#',
+    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     id: 4,
-    title: 'Content Marketing Intern',
-    company: 'MediaGrowth',
-    location: 'Delhi',
-    type: 'Internship',
-    category: 'Marketing',
-    postedDate: '2024-12-08',
-    description: 'Great opportunity for students interested in content creation and digital marketing.',
-    requirements: ['Strong writing skills', 'Social media knowledge', 'SEO basics'],
-    applicationLink: '#'
+    title: 'Tech Startup Networking Mixer',
+    date: '2025-02-05',
+    time: '6:30 PM - 9:00 PM IST',
+    location: 'Bangalore Innovation Center',
+    type: 'Networking',
+    category: 'Entrepreneurship',
+    speaker: 'Various Startup Founders',
+    description: 'Connect with tech startup founders, investors, and like-minded professionals in this casual networking event.',
+    registrationLink: '#',
+    image: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     id: 5,
-    title: 'Full Stack Developer',
-    company: 'WebSolutions',
-    location: 'Mumbai',
-    type: 'Full-time',
+    title: 'Frontend Development Bootcamp',
+    date: '2025-02-10',
+    time: '10:00 AM - 4:00 PM IST',
+    location: 'Online (Zoom)',
+    type: 'Bootcamp',
     category: 'Development',
-    postedDate: '2024-12-05',
-    description: 'Looking for a Full Stack Developer with experience in MERN or MEAN stack.',
-    requirements: ['JavaScript/TypeScript', 'React or Angular', 'Node.js', 'MongoDB'],
-    applicationLink: '#'
+    speaker: 'Neha Patel, Senior Frontend Engineer',
+    description: 'Intensive one-day bootcamp covering modern frontend technologies including React, TypeScript, and CSS frameworks.',
+    registrationLink: '#',
+    image: 'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     id: 6,
-    title: 'Product Manager',
-    company: 'InnovateCo',
-    location: 'Pune',
-    type: 'Full-time',
-    category: 'Management',
-    postedDate: '2024-12-01',
-    description: 'Experienced Product Manager needed to lead product development for our SaaS platform.',
-    requirements: ['5+ years in product management', 'Technical background', 'Agile methodologies'],
-    applicationLink: '#'
+    title: 'Technical Interview Preparation',
+    date: '2025-02-15',
+    time: '5:00 PM - 7:00 PM IST',
+    location: 'Online (Google Meet)',
+    type: 'Workshop',
+    category: 'Career',
+    speaker: 'Vikram Singh, Tech Recruiter',
+    description: 'Learn effective strategies to prepare for and ace technical interviews at top tech companies.',
+    registrationLink: '#',
+    image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   }
 ];
 
-const JobOpportunities: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+// Past events - simplified version of the above
+const pastEventsData = [
+  {
+    id: 101,
+    title: 'Introduction to Machine Learning',
+    date: '2024-12-10',
+    type: 'Workshop',
+    category: 'Data Science'
+  },
+  {
+    id: 102,
+    title: 'Resume Building Masterclass',
+    date: '2024-12-05',
+    type: 'Webinar',
+    category: 'Career'
+  },
+  {
+    id: 103,
+    title: 'Cloud Computing Essentials',
+    date: '2024-11-28',
+    type: 'Workshop',
+    category: 'Development'
+  },
+  {
+    id: 104,
+    title: 'Startup Funding Strategies',
+    date: '2024-11-15',
+    type: 'Panel Discussion',
+    category: 'Entrepreneurship'
+  }
+];
+
+const Events: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedType, setSelectedType] = useState('');
-  const [selectedLocation, setSelectedLocation] = useState('');
 
-  // Get unique categories, job types, and locations for filters
-  const categories = [...new Set(jobsData.map(job => job.category))];
-  const jobTypes = [...new Set(jobsData.map(job => job.type))];
-  const locations = [...new Set(jobsData.map(job => job.location))];
+  // Get unique categories and event types for filters
+  const categories = [...new Set(eventsData.map(event => event.category))];
+  const eventTypes = [...new Set(eventsData.map(event => event.type))];
 
-  // Filter jobs based on search term and filters
-  const filteredJobs = jobsData.filter(job => {
-    const matchesSearch = job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      job.description.toLowerCase().includes(searchTerm.toLowerCase());
+  // Filter events based on filters
+  const filteredEvents = eventsData.filter(event => {
+    const matchesCategory = selectedCategory === '' || event.category === selectedCategory;
+    const matchesType = selectedType === '' || event.type === selectedType;
 
-    const matchesCategory = selectedCategory === '' || job.category === selectedCategory;
-    const matchesType = selectedType === '' || job.type === selectedType;
-    const matchesLocation = selectedLocation === '' || job.location === selectedLocation;
-
-    return matchesSearch && matchesCategory && matchesType && matchesLocation;
+    return matchesCategory && matchesType;
   });
 
   // Reset all filters
   const resetFilters = () => {
-    setSearchTerm('');
     setSelectedCategory('');
     setSelectedType('');
-    setSelectedLocation('');
+  };
+
+  // Format date to display in a more readable format
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    return new Date(dateString).toLocaleDateString('en-US', options);
   };
 
   return (
@@ -117,98 +165,135 @@ const JobOpportunities: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">Job Opportunities</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">Events & Workshops</h1>
         <p className="text-xl text-gray-600 max-w-4xl mb-12">
-          Explore the latest internships and job opportunities shared by our community partners.
-          Find positions that match your skills and career aspirations.
+          Stay updated with our upcoming events, workshops, webinars, and other learning opportunities.
+          Join us to enhance your skills, network with professionals, and grow your career.
         </p>
       </motion.div>
 
-      {/* Search and Filters */}
-      <motion.div
-        className="bg-white rounded-xl shadow-md p-6 mb-10"
+      {/* Featured Event */}
+      <motion.section
+        className="mb-16"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
       >
-        <div className="mb-6">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search for jobs..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full p-4 pl-12 pr-4 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+        <h2 className="section-title mb-8">Featured Event</h2>
+
+        <div className="bg-white rounded-xl shadow-md overflow-hidden md:flex">
+          <div className="md:w-1/2 h-64 md:h-auto relative">
+            <img
+              src="https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Tech Career Fair"
+              className="w-full h-full object-cover"
             />
-            <Search className="absolute left-4 top-4 text-gray-400" />
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div className="absolute bottom-4 left-4 bg-orange-600 text-white px-4 py-2 rounded-lg font-semibold">
+              Jan 30, 2025
+            </div>
+          </div>
+
+          <div className="md:w-1/2 p-6 md:p-8">
+            <div className="flex flex-wrap gap-2 mb-4">
+              <span className="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
+                Career Fair
+              </span>
+              <span className="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">
+                In-Person
+              </span>
+            </div>
+
+            <h3 className="text-2xl font-bold mb-4">Annual Tech Career Fair 2025</h3>
+
+            <div className="flex flex-col space-y-3 mb-6 text-gray-600">
+              <div className="flex items-center">
+                <Calendar className="w-5 h-5 mr-2 text-orange-600" />
+                <span>January 30, 2025</span>
+              </div>
+              <div className="flex items-center">
+                <Clock className="w-5 h-5 mr-2 text-orange-600" />
+                <span>10:00 AM - 5:00 PM IST</span>
+              </div>
+              <div className="flex items-center">
+                <MapPin className="w-5 h-5 mr-2 text-orange-600" />
+                <span>Hyderabad International Convention Center</span>
+              </div>
+              <div className="flex items-center">
+                <Users className="w-5 h-5 mr-2 text-orange-600" />
+                <span>20+ Companies Participating</span>
+              </div>
+            </div>
+
+            <p className="text-gray-600 mb-6">
+              Join us for our annual Tech Career Fair featuring top companies from across India.
+              This is your opportunity to connect with recruiters, explore job opportunities, and attend career development workshops.
+            </p>
+
+            <a href="#" className="btn btn-primary">
+              Register Now
+            </a>
           </div>
         </div>
+      </motion.section>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            >
-              <option value="">All Categories</option>
-              {categories.map((category, index) => (
-                <option key={index} value={category}>{category}</option>
-              ))}
-            </select>
-          </div>
+      {/* Filters */}
+      <motion.section
+        className="mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <div className="bg-white rounded-xl shadow-md p-6">
+          <div className="flex flex-col md:flex-row md:items-end gap-4">
+            <div className="md:w-1/3">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Event Category</label>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >
+                <option value="">All Categories</option>
+                {categories.map((category, index) => (
+                  <option key={index} value={category}>{category}</option>
+                ))}
+              </select>
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Job Type</label>
-            <select
-              value={selectedType}
-              onChange={(e) => setSelectedType(e.target.value)}
-              className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            >
-              <option value="">All Types</option>
-              {jobTypes.map((type, index) => (
-                <option key={index} value={type}>{type}</option>
-              ))}
-            </select>
-          </div>
+            <div className="md:w-1/3">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Event Type</label>
+              <select
+                value={selectedType}
+                onChange={(e) => setSelectedType(e.target.value)}
+                className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >
+                <option value="">All Types</option>
+                {eventTypes.map((type, index) => (
+                  <option key={index} value={type}>{type}</option>
+                ))}
+              </select>
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
-            <select
-              value={selectedLocation}
-              onChange={(e) => setSelectedLocation(e.target.value)}
-              className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            >
-              <option value="">All Locations</option>
-              {locations.map((location, index) => (
-                <option key={index} value={location}>{location}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex items-end">
-            <button
-              onClick={resetFilters}
-              className="w-full btn btn-secondary flex items-center justify-center gap-2"
-            >
-              <Filter size={18} />
-              Reset Filters
-            </button>
+            <div className="md:w-1/3">
+              <button
+                onClick={resetFilters}
+                className="w-full btn btn-secondary flex items-center justify-center"
+              >
+                <Filter size={18} className="mr-2" />
+                Reset Filters
+              </button>
+            </div>
           </div>
         </div>
-      </motion.div>
+      </motion.section>
 
-      {/* Job Listings */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-6 flex items-center">
-          <Briefcase className="mr-2" size={24} />
-          {filteredJobs.length} {filteredJobs.length === 1 ? 'Opportunity' : 'Opportunities'} Available
-        </h2>
+      {/* Upcoming Events */}
+      <section className="mb-16">
+        <h2 className="section-title mb-8">Upcoming Events</h2>
 
-        {filteredJobs.length === 0 ? (
+        {filteredEvents.length === 0 ? (
           <div className="bg-white rounded-xl shadow-md p-8 text-center">
-            <p className="text-gray-600 text-lg">No jobs found matching your criteria. Try adjusting your filters.</p>
+            <p className="text-gray-600 text-lg">No events found matching your criteria. Try adjusting your filters.</p>
             <button
               onClick={resetFilters}
               className="mt-4 btn btn-primary"
@@ -217,72 +302,121 @@ const JobOpportunities: React.FC = () => {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6">
-            {filteredJobs.map((job, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredEvents.map((event, index) => (
               <motion.div
-                key={job.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                key={event.id}
+                className="bg-white rounded-xl shadow-md overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 + (index * 0.05) }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
               >
+                <div className="h-48 relative">
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 bg-white text-orange-600 px-3 py-1 rounded-lg font-semibold text-sm">
+                    {formatDate(event.date)}
+                  </div>
+                </div>
+
                 <div className="p-6">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <h3 className="text-xl font-bold">{job.title}</h3>
-                    <div className="mt-2 md:mt-0">
-                      <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${job.type === 'Full-time' ? 'bg-green-100 text-green-800' :
-                          job.type === 'Part-time' ? 'bg-blue-100 text-blue-800' :
-                            job.type === 'Contract' ? 'bg-purple-100 text-purple-800' :
-                              'bg-orange-100 text-orange-800'
-                        }`}>
-                        {job.type}
-                      </span>
+                  <div className="flex gap-2 mb-3">
+                    <span className="px-2 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-medium">
+                      {event.type}
+                    </span>
+                    <span className="px-2 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">
+                      {event.category}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-bold mb-3">{event.title}</h3>
+
+                  <div className="flex flex-col space-y-2 mb-4 text-gray-600 text-sm">
+                    <div className="flex items-center">
+                      <Clock className="w-4 h-4 mr-2 text-orange-600" />
+                      <span>{event.time}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <MapPin className="w-4 h-4 mr-2 text-orange-600" />
+                      <span>{event.location}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Users className="w-4 h-4 mr-2 text-orange-600" />
+                      <span>{event.speaker}</span>
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-4 text-gray-600 mb-4">
-                    <div className="flex items-center">
-                      <Building size={16} className="mr-1" />
-                      <span>{job.company}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <MapPin size={16} className="mr-1" />
-                      <span>{job.location}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Calendar size={16} className="mr-1" />
-                      <span>Posted on {new Date(job.postedDate).toLocaleDateString()}</span>
-                    </div>
-                  </div>
-
-                  <p className="text-gray-600 mb-4">{job.description}</p>
-
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-2">Requirements:</h4>
-                    <ul className="list-disc pl-5 text-gray-600">
-                      {job.requirements.map((req, i) => (
-                        <li key={i}>{req}</li>
-                      ))}
-                    </ul>
-                  </div>
+                  <p className="text-gray-600 text-sm mb-6 line-clamp-3">
+                    {event.description}
+                  </p>
 
                   <a
-                    href={job.applicationLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary w-full md:w-auto"
+                    href={event.registrationLink}
+                    className="btn btn-primary w-full"
                   >
-                    Apply Now
+                    Register
                   </a>
                 </div>
               </motion.div>
             ))}
           </div>
         )}
-      </div>
+      </section>
 
-      {/* Post a Job CTA */}
-      <motion.div
+      {/* Past Events */}
+      <section className="mb-16">
+        <h2 className="section-title mb-8">Past Events</h2>
+
+        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+          <ul className="divide-y divide-gray-100">
+            {pastEventsData.map((event, index) => (
+              <motion.li
+                key={event.id}
+                className="p-4 hover:bg-gray-50 transition-colors"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+              >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <h3 className="font-semibold">{event.title}</h3>
+                    <div className="flex flex-wrap gap-2 mt-1">
+                      <span className="text-gray-600 text-sm">{formatDate(event.date)}</span>
+                      <span className="text-gray-500 text-sm">•</span>
+                      <span className="text-gray-600 text-sm">{event.type}</span>
+                      <span className="text-gray-500 text-sm">•</span>
+                      <span className="text-gray-600 text-sm">{event.category}</span>
+                    </div>
+                  </div>
+                  <a
+                    href="#"
+                    className="text-orange-600 flex items-center mt-2 md:mt-0 hover:text-orange-700 text-sm font-medium"
+                  >
+                    View Recording
+                    <ExternalLink size={14} className="ml-1" />
+                  </a>
+                </div>
+              </motion.li>
+            ))}
+          </ul>
+
+          <div className="p-4 border-t border-gray-100 text-center">
+            <a href="#" className="text-orange-600 hover:text-orange-700 font-medium inline-flex items-center">
+              View all past events
+              <ArrowRight size={16} className="ml-1" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Host an Event CTA */}
+      <motion.section
         className="bg-orange-50 rounded-xl p-8 text-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -294,16 +428,13 @@ const JobOpportunities: React.FC = () => {
           If you're looking to hire talented students and professionals, you can post your job or internship openings on The Student Spot.
           Connect with our community of 5000+ skilled candidates.
         </p>
-        <a
-          href="/contact"
-          className="btn btn-primary"
-        >
+        <Link to="/contact" className="btn btn-primary">
           Post a Job
-        </a>
-      </motion.div>
+        </Link>
 
+      </motion.section>
     </div>
   );
 };
 
-export default JobOpportunities;
+export default Events;
