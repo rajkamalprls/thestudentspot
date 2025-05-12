@@ -282,8 +282,8 @@ const JobOpportunities: React.FC = () => {
       </div>
 
       {/* Post a Job CTA */}
-      <motion.div
-        className="bg-orange-50 rounded-xl p-8 text-center mt-8"
+      <motion.section
+        className="bg-orange-50 rounded-xl p-8 text-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -297,7 +297,7 @@ const JobOpportunities: React.FC = () => {
         <Link to="/contact" className="btn btn-primary">
           Post a Job
         </Link>
-      </motion.div>
+      </motion.section>
     </div>
   );
 };
