@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <Logo className="h-12 w-auto mb-4" light />
             <p className="text-gray-400 mb-6">
-              A growing community of 2000+ students and professionals from across India, 
+              A growing community of 5000+ students and professionals from across India, 
               dedicated to connecting talent with opportunities for growth and success.
             </p>
             <div className="flex space-x-4">
@@ -141,7 +141,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li className="flex items-start text-gray-400">
                 <MapPin size={20} className="mr-2 mt-1 flex-shrink-0" />
-                <span>123 Campus Drive, University District, Example City</span>
+                <span>Hyderabad Telangana India ❤️🤍💚</span>
               </li>
               <li className="flex items-center text-gray-400">
                 <Phone size={20} className="mr-2" />
@@ -168,11 +168,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-          <p>© {currentYear} The Student Spot. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
-export default Footer;
+  <p>© {currentYear} The Student Spot. All rights reserved.</p>
+  <p className="mt-2">Website Views: {views !== null ? views : "Loading..."}</p>
+  <p className="mt-1">Made with ❤️ in India</p>
+</div>
