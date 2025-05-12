@@ -31,7 +31,7 @@ const About: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           The Student Spot is a dynamic platform designed to bridge the gap between students, professionals, and recruiters.
-          Our community has grown to over 2000+ members across India, united by a passion for learning, growth, and career development.
+          Our community has grown to over 5000+ members across India, united by a passion for learning, growth, and career development.
         </motion.p>
       </section>
 
@@ -203,7 +203,7 @@ const About: React.FC = () => {
             <p className="text-orange-600 font-medium mb-4">Founder & CEO, The Student Spot</p>
             <p className="text-gray-600 mb-6">
               Rajkamal founded The Student Spot with a vision to create a platform where students and professionals could connect,
-              learn, and grow together. With a passion for technology and education, he has grown the community to over 2000 members
+              learn, and grow together. With a passion for technology and education, he has grown the community to over 5000+ members
               from across India.
             </p>
             <div className="flex space-x-4">
