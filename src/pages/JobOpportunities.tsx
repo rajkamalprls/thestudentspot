@@ -282,24 +282,26 @@ const JobOpportunities: React.FC = () => {
         )}
       </div>
 
-     
-     {/* Post a Job CTA */}
-        <motion.div 
-          className="bg-orange-50 rounded-xl p-8 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+      {/* Post a Job CTA */}
+      <motion.div 
+        className="bg-orange-50 rounded-xl p-8 text-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="text-2xl font-bold mb-4">Are You a Recruiter?</h2>
+        <p className="text-gray-600 mb-6 max-w-3xl mx-auto">
+          If you're looking to hire talented students and professionals, you can post your job or internship openings on The Student Spot.
+          Connect with our community of 2000+ skilled candidates.
+        </p>
+        <a 
+          href="/contact" 
+          className="btn btn-primary"
         >
-          <h2 className="text-2xl font-bold mb-4">Are You a Recruiter?</h2>
-          <p className="text-gray-600 mb-6 max-w-3xl mx-auto">
-            If you're looking to hire talented students and professionals, you can post your job or internship openings on The Student Spot.
-            Connect with our community of 5000+ skilled candidates.
-          </p>
-          <Link to="/contact" className="btn btn-primary">
-            Post a Job
-          </Link>
-        </motion.div>
+          Post a Job
+        </a>
+      </motion.div>
     </div>
   );
 };
