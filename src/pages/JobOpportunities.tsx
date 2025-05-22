@@ -91,14 +91,14 @@ const JobOpportunities: React.FC = () => {
 
   // Filter jobs based on search term and filters
   const filteredJobs = jobsData.filter(job => {
-    const matchesSearch = job.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                        job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        job.description.toLowerCase().includes(searchTerm.toLowerCase());
-                        
+    const matchesSearch = job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      job.description.toLowerCase().includes(searchTerm.toLowerCase());
+
     const matchesCategory = selectedCategory === '' || job.category === selectedCategory;
     const matchesType = selectedType === '' || job.type === selectedType;
     const matchesLocation = selectedLocation === '' || job.location === selectedLocation;
-    
+
     return matchesSearch && matchesCategory && matchesType && matchesLocation;
   });
 
@@ -119,13 +119,13 @@ const JobOpportunities: React.FC = () => {
       >
         <h1 className="text-4xl md:text-5xl font-bold mb-6">Job Opportunities</h1>
         <p className="text-xl text-gray-600 max-w-4xl mb-12">
-          Explore the latest internships and job opportunities shared by our community partners. 
+          Explore the latest internships and job opportunities shared by our community partners.
           Find positions that match your skills and career aspirations.
         </p>
       </motion.div>
 
       {/* Search and Filters */}
-      <motion.div 
+      <motion.div
         className="bg-white rounded-xl shadow-md p-6 mb-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -143,11 +143,11 @@ const JobOpportunities: React.FC = () => {
             <Search className="absolute left-4 top-4 text-gray-400" />
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
-            <select 
+            <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
               className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -158,10 +158,10 @@ const JobOpportunities: React.FC = () => {
               ))}
             </select>
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Job Type</label>
-            <select 
+            <select
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
               className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -172,10 +172,10 @@ const JobOpportunities: React.FC = () => {
               ))}
             </select>
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
-            <select 
+            <select
               value={selectedLocation}
               onChange={(e) => setSelectedLocation(e.target.value)}
               className="w-full p-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -186,9 +186,9 @@ const JobOpportunities: React.FC = () => {
               ))}
             </select>
           </div>
-          
+
           <div className="flex items-end">
-            <button 
+            <button
               onClick={resetFilters}
               className="w-full btn btn-secondary flex items-center justify-center gap-2"
             >
@@ -205,11 +205,11 @@ const JobOpportunities: React.FC = () => {
           <Briefcase className="mr-2" size={24} />
           {filteredJobs.length} {filteredJobs.length === 1 ? 'Opportunity' : 'Opportunities'} Available
         </h2>
-        
+
         {filteredJobs.length === 0 ? (
           <div className="bg-white rounded-xl shadow-md p-8 text-center">
             <p className="text-gray-600 text-lg">No jobs found matching your criteria. Try adjusting your filters.</p>
-            <button 
+            <button
               onClick={resetFilters}
               className="mt-4 btn btn-primary"
             >
@@ -219,7 +219,7 @@ const JobOpportunities: React.FC = () => {
         ) : (
           <div className="grid grid-cols-1 gap-6">
             {filteredJobs.map((job, index) => (
-              <motion.div 
+              <motion.div
                 key={job.id}
                 className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
                 initial={{ opacity: 0, y: 20 }}
@@ -230,17 +230,16 @@ const JobOpportunities: React.FC = () => {
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                     <h3 className="text-xl font-bold">{job.title}</h3>
                     <div className="mt-2 md:mt-0">
-                      <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
-                        job.type === 'Full-time' ? 'bg-green-100 text-green-800' :
+                      <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${job.type === 'Full-time' ? 'bg-green-100 text-green-800' :
                         job.type === 'Part-time' ? 'bg-blue-100 text-blue-800' :
-                        job.type === 'Contract' ? 'bg-purple-100 text-purple-800' :
-                        'bg-orange-100 text-orange-800'
-                      }`}>
+                          job.type === 'Contract' ? 'bg-purple-100 text-purple-800' :
+                            'bg-orange-100 text-orange-800'
+                        }`}>
                         {job.type}
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="flex flex-wrap gap-4 text-gray-600 mb-4">
                     <div className="flex items-center">
                       <Building size={16} className="mr-1" />
@@ -255,9 +254,9 @@ const JobOpportunities: React.FC = () => {
                       <span>Posted on {new Date(job.postedDate).toLocaleDateString()}</span>
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-600 mb-4">{job.description}</p>
-                  
+
                   <div className="mb-6">
                     <h4 className="font-semibold mb-2">Requirements:</h4>
                     <ul className="list-disc pl-5 text-gray-600">
@@ -266,10 +265,10 @@ const JobOpportunities: React.FC = () => {
                       ))}
                     </ul>
                   </div>
-                  
-                  <a 
-                    href={job.applicationLink} 
-                    target="_blank" 
+
+                  <a
+                    href={job.applicationLink}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="btn btn-primary w-full md:w-auto"
                   >
@@ -283,7 +282,7 @@ const JobOpportunities: React.FC = () => {
       </div>
 
       {/* Post a Job CTA */}
-      <motion.div 
+      <motion.div
         className="bg-orange-50 rounded-xl p-8 text-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -293,14 +292,11 @@ const JobOpportunities: React.FC = () => {
         <h2 className="text-2xl font-bold mb-4">Are You a Recruiter?</h2>
         <p className="text-gray-600 mb-6 max-w-3xl mx-auto">
           If you're looking to hire talented students and professionals, you can post your job or internship openings on The Student Spot.
-          Connect with our community of 2000+ skilled candidates.
+          Connect with our community of 5000+ skilled candidates.
         </p>
-        <a 
-          href="/contact" 
-          className="btn btn-primary"
-        >
+        <Link to="/contact" className="btn btn-primary">
           Post a Job
-        </a>
+        </Link>
       </motion.div>
     </div>
   );
