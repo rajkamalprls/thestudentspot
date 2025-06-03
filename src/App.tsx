@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 // Components
 import Header from './components/layout/Header';
@@ -19,49 +19,36 @@ import CareerGuidance from './pages/services/CareerGuidance';
 import ResumeBuilding from './pages/services/ResumeBuilding';
 import Mentorship from './pages/services/Mentorship';
 
-// New Login Page import
-import LoginPage from './pages/LoginPage';
-
-// Scroll to top wrapper component
-function ScrollToTop() {
+function App() {
   const location = useLocation();
+
+  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
-  return null;
-}
 
-function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/jobs" element={<JobOpportunities />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/contact" element={<Contact />} />
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/jobs" element={<JobOpportunities />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/contact" element={<Contact />} />
           
-
-            {/* Service Routes */}
-            <Route path="/services/career-guidance" element={<CareerGuidance />} />
-            <Route path="/services/resume-building" element={<ResumeBuilding />} />
-            <Route path="/services/mentorship" element={<Mentorship />} />
-
-            {/* Login Route */}
-            <Route path="/login" element={<LoginPage />} />
-
-            {/* Catch-all Not Found */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+          {/* Service Routes */}
+          <Route path="/services/career-guidance" element={<CareerGuidance />} />
+          <Route path="/services/resume-building" element={<ResumeBuilding />} />
+          <Route path="/services/mentorship" element={<Mentorship />} />
+          
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
