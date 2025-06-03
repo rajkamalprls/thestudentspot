@@ -36,15 +36,7 @@ const Footer: React.FC = () => {
               >
                 <Instagram size={20} />
               </a>
-              <a
-                href="https://x.com/the_studentspot"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary-500 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
+             
               <a
                 href="https://www.linkedin.com/company/thestudentspot/"
                 target="_blank"
@@ -53,6 +45,16 @@ const Footer: React.FC = () => {
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
+              </a>
+
+               <a
+                href="https://x.com/the_studentspot"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary-500 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={20} />
               </a>
 
               <a
