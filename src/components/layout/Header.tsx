@@ -59,6 +59,8 @@ const Header: React.FC = () => {
               {item.title}
             </NavLink>
           ))}
+
+          {/* Login Button */}
           <Link
             to="/login"
             className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-2 rounded-full text-sm shadow hover:opacity-90 transition"
@@ -83,15 +85,15 @@ const Header: React.FC = () => {
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={({ isActive }) =>
-                  `text-xl ${isActive ? activeClass : normalClass}`
-                }
+                className={({ isActive }) => `text-xl ${isActive ? activeClass : normalClass}`}
                 onClick={closeMenu}
                 end={item.path === '/'}
               >
                 {item.title}
               </NavLink>
             ))}
+
+            {/* Login Button for Mobile */}
             <Link
               to="/login"
               onClick={closeMenu}
