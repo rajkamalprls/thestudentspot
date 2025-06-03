@@ -242,7 +242,7 @@ const Resources: React.FC = () => {
           If you've created tutorials, courses, or have valuable resources to share with our community, 
           we'd love to feature your content. Help others learn and grow!
         </p>
-        <Link to="/contact" className="btn btn-primary">
+        <Link to="/login" className="btn btn-primary">
           Contribute Resources
         </Link>
       </motion.section>
