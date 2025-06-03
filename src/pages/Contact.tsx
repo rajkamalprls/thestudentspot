@@ -247,6 +247,8 @@ const Contact: React.FC = () => {
                       <Linkedin className="w-5 h-5 mr-3" />
                       <span>LinkedIn</span>
                     </a>
+                    <li/>
+                    <li>
                     <a 
                       href="https://x.com/the_studentspot" 
                       target="_blank" 
