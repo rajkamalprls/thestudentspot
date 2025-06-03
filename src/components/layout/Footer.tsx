@@ -14,49 +14,50 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <Logo className="h-12 w-auto mb-4" light />
             <p className="text-gray-400 mb-6">
-              A growing community of 2000+ students and professionals from across India, 
+              A growing community of 2000+ students and professionals from across India,
               dedicated to connecting talent with opportunities for growth and success.
             </p>
             <div className="flex space-x-4">
-              <a 
-                href="https://www.instagram.com/the_studentspot/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary-500 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-              <a 
-                href="https://www.linkedin.com/company/thestudentspot/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary-500 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a 
-                href="https://whatsapp.com/channel/0029Vb6ft6072WTxJ5eMKA2I" 
-                target="_blank" 
+              <a
+                href="https://whatsapp.com/channel/0029Vb6ft6072WTxJ5eMKA2I"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-primary-500 transition-colors"
                 aria-label="WhatsApp"
               >
                 <MessageSquare size={20} />
               </a>
-              <a 
-                href="https://t.me/thestudentspot" 
-                target="_blank" 
+              <a
+                href="https://www.instagram.com/the_studentspot/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary-500 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={20} />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/thestudentspot/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary-500 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={20} />
+              </a>
+
+              <a
+                href="https://t.me/thestudentspot"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-primary-500 transition-colors"
                 aria-label="Telegram"
               >
                 <MessageSquare size={20} />
               </a>
-              <a 
-                href="https://youtube.com/@thestudentspot" 
-                target="_blank" 
+              <a
+                href="https://youtube.com/@thestudentspot"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-primary-500 transition-colors"
                 aria-label="YouTube"
@@ -93,9 +94,9 @@ const Footer: React.FC = () => {
             <h3 className="text-white text-lg font-semibold mb-4">Community</h3>
             <ul className="space-y-2">
               <li>
-                <a 
-                  href="https://chat.whatsapp.com/LxA5xaAdlKp3nvZmIGxLcp" 
-                  target="_blank" 
+                <a
+                  href="https://chat.whatsapp.com/LxA5xaAdlKp3nvZmIGxLcp"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-primary-500 transition-colors"
                 >
@@ -103,9 +104,9 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://whatsapp.com/channel/0029Vb6ft6072WTxJ5eMKA2I" 
-                  target="_blank" 
+                <a
+                  href="https://whatsapp.com/channel/0029Vb6ft6072WTxJ5eMKA2I"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-primary-500 transition-colors"
                 >
@@ -113,9 +114,9 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://t.me/thestudentspot" 
-                  target="_blank" 
+                <a
+                  href="https://t.me/thestudentspot"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-primary-500 transition-colors"
                 >
@@ -123,9 +124,9 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://bento.me/thestudentspot" 
-                  target="_blank" 
+                <a
+                  href="https://bento.me/thestudentspot"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-primary-500 transition-colors"
                 >
@@ -151,8 +152,8 @@ const Footer: React.FC = () => {
               </li>
               <li className="flex items-center text-gray-400">
                 <Mail size={20} className="mr-2" />
-                <a 
-                  href="mailto:thestudentspotofficial@gmail.com" 
+                <a
+                  href="mailto:thestudentspotofficial@gmail.com"
                   className="hover:text-primary-500 transition-colors break-all"
                 >
                   thestudentspotofficial@gmail.com
