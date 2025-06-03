@@ -13,6 +13,7 @@ import Resources from './pages/Resources';
 import Events from './pages/Events';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import NotFound from './pages/Login';
 
 // Service Pages
 import CareerGuidance from './pages/services/CareerGuidance';
@@ -38,6 +39,7 @@ function App() {
           <Route path="/resources" element={<Resources />} />
           <Route path="/events" element={<Events />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/contact" element={<Login />} />
           
           {/* Service Routes */}
           <Route path="/services/career-guidance" element={<CareerGuidance />} />
