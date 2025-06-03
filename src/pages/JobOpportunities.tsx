@@ -291,15 +291,24 @@ const JobOpportunities: React.FC = () => {
       >
         <h2 className="text-2xl font-bold mb-4">Are You a Recruiter?</h2>
         <p className="text-gray-600 mb-6 max-w-3xl mx-auto">
-          If you're looking to hire talented students and professionals, you can post your job or internship openings on The Student Spot.
+          If you're looking to hire talented students and professionals, you can post your job or internship openings on <strong>The Student Spot</strong>.
           Connect with our community of 5000+ skilled candidates.
         </p>
-        <a
-          href="/login"
-          className="btn btn-primary"
+
+        <motion.div
+          className="flex flex-wrap justify-center gap-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Post a Job
-        </a>
+          <Link to="/login" className="btn btn-primary">
+            Post a Job
+          </Link>
+          <Link to="/contact" className="btn btn-secondary">
+            Contact Us
+          </Link>
+        </motion.div>
       </motion.div>
 
 
