@@ -1,6 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Linkedin, MessageSquare, Instagram as Telegram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import {
+  FaInstagram,
+  FaLinkedin,
+  FaTelegramPlane,
+  FaYoutube,
+  FaWhatsapp,
+  FaXTwitter
+} from 'react-icons/fa6';
+import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 import Logo from '../shared/Logo';
 
 const Footer: React.FC = () => {
@@ -25,7 +33,7 @@ const Footer: React.FC = () => {
                 className="text-gray-400 hover:text-primary-500 transition-colors"
                 aria-label="WhatsApp"
               >
-                <MessageSquare size={20} />
+                <FaWhatsapp size={20} />
               </a>
               <a
                 href="https://www.instagram.com/the_studentspot/"
@@ -34,7 +42,16 @@ const Footer: React.FC = () => {
                 className="text-gray-400 hover:text-primary-500 transition-colors"
                 aria-label="Instagram"
               >
-                <Instagram size={20} />
+                <FaInstagram size={20} />
+              </a>
+              <a
+                href="https://x.com/the_studentspot"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-primary-500 transition-colors"
+                aria-label="Twitter"
+              >
+                <FaXTwitter size={20} />
               </a>
               <a
                 href="https://www.linkedin.com/company/thestudentspot/"
@@ -43,9 +60,8 @@ const Footer: React.FC = () => {
                 className="text-gray-400 hover:text-primary-500 transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={20} />
+                <FaLinkedin size={20} />
               </a>
-
               <a
                 href="https://t.me/thestudentspot"
                 target="_blank"
@@ -53,7 +69,7 @@ const Footer: React.FC = () => {
                 className="text-gray-400 hover:text-primary-500 transition-colors"
                 aria-label="Telegram"
               >
-                <MessageSquare size={20} />
+                <FaTelegramPlane size={20} />
               </a>
               <a
                 href="https://youtube.com/@thestudentspot"
@@ -62,7 +78,7 @@ const Footer: React.FC = () => {
                 className="text-gray-400 hover:text-primary-500 transition-colors"
                 aria-label="YouTube"
               >
-                <Youtube size={20} />
+                <FaYoutube size={20} />
               </a>
             </div>
           </div>
@@ -141,17 +157,17 @@ const Footer: React.FC = () => {
             <h3 className="text-white text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-start text-gray-400">
-                <MapPin size={20} className="mr-2 mt-1 flex-shrink-0" />
+                <MdLocationOn size={20} className="mr-2 mt-1 flex-shrink-0" />
                 <span>Hyderabad Telangana India ❤️🤍💚</span>
               </li>
               <li className="flex items-center text-gray-400">
-                <Phone size={20} className="mr-2" />
+                <MdPhone size={20} className="mr-2" />
                 <a href="tel:+919581929676" className="hover:text-primary-500 transition-colors">
                   +91 958 192 9676
                 </a>
               </li>
               <li className="flex items-center text-gray-400">
-                <Mail size={20} className="mr-2" />
+                <MdEmail size={20} className="mr-2" />
                 <a
                   href="mailto:thestudentspotofficial@gmail.com"
                   className="hover:text-primary-500 transition-colors break-all"
