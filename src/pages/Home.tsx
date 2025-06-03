@@ -93,14 +93,7 @@ const Home: React.FC = () => {
               <Link to="/about" className="btn bg-white text-orange-600 hover:bg-gray-100">
                 Learn More
               </Link>
-              <a 
-                href="https://chat.whatsapp.com/LxA5xaAdlKp3nvZmIGxLcp" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn bg-orange-600 text-white border border-white hover:bg-orange-700"
-              >
-                Join Our Community
-              </a>
+              <Link to="/login" ...>Join Now</Link>
             </motion.div>
           </div>
         </div>
