@@ -14,12 +14,10 @@ const Header: React.FC = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent background scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
   }, [isOpen]);
@@ -60,7 +58,6 @@ const Header: React.FC = () => {
             </NavLink>
           ))}
 
-          {/* Login Button */}
           <Link
             to="/login"
             className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-2 rounded-full text-sm shadow hover:opacity-90 transition"
@@ -69,7 +66,7 @@ const Header: React.FC = () => {
           </Link>
         </nav>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Menu Button */}
         <button className="md:hidden z-50" onClick={toggleMenu} aria-label="Toggle menu">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -93,7 +90,6 @@ const Header: React.FC = () => {
               </NavLink>
             ))}
 
-            {/* Login Button for Mobile */}
             <Link
               to="/login"
               onClick={closeMenu}
