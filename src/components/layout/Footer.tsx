@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Linkedin, MessageSquare, Instagram as Telegram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Linkedin, MessageSquare, Telegram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import Logo from '../shared/Logo';
 
 const Footer: React.FC = () => {
