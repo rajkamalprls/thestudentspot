@@ -294,10 +294,14 @@ const JobOpportunities: React.FC = () => {
           If you're looking to hire talented students and professionals, you can post your job or internship openings on The Student Spot.
           Connect with our community of 5000+ skilled candidates.
         </p>
-        <Link to="/login" className="btn btn-primary">
+        <a
+          href="/contact"
+          className="btn btn-primary"
+        >
           Post a Job
-        </Link>
+        </a>
       </motion.div>
+
     </div>
   );
 };
