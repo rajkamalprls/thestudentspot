@@ -82,7 +82,7 @@ const Home: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              Join our thriving community of 2000+ tech enthusiasts, students, and professionals passionate about learning, networking, and career development.
+              Join our thriving community of 5000+ tech enthusiasts, students, and professionals passionate about learning, networking, and career development.
             </motion.p>
             <motion.div
               className="flex flex-wrap gap-4"
@@ -116,7 +116,7 @@ const Home: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h3 className="text-3xl md:text-4xl font-bold text-orange-600">2000+</h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-orange-600">5000+</h3>
               <p className="text-gray-600">Community Members</p>
             </motion.div>
             <motion.div
