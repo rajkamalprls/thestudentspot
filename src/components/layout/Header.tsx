@@ -58,14 +58,12 @@ const Header: React.FC = () => {
               {item.title}
             </NavLink>
           ))}
-          <a 
-            href="https://chat.whatsapp.com/LxA5xaAdlKp3nvZmIGxLcp" 
-            target="_blank" 
-            rel="noopener noreferrer"
+          <Link 
+            to="/login" 
             className="btn btn-primary"
           >
-            Join Community
-          </a>
+            Login
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -93,15 +91,13 @@ const Header: React.FC = () => {
                 {item.title}
               </NavLink>
             ))}
-            <a 
-              href="https://chat.whatsapp.com/LxA5xaAdlKp3nvZmIGxLcp" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <Link 
+              to="/login" 
               className="btn btn-primary mt-4"
               onClick={closeMenu}
             >
-              Join Community
-            </a>
+              Login
+            </Link>
           </div>
         </div>
       </div>
