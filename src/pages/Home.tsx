@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  ChevronRight, 
-  Users, 
-  BookOpen, 
-  Calendar, 
-  Briefcase, 
+import {
+  ChevronRight,
+  Users,
+  BookOpen,
+  Calendar,
+  Briefcase,
   CheckCircle,
   GraduationCap,
   FileEdit,
@@ -68,7 +68,7 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center opacity-10"></div>
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="max-w-3xl">
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -76,15 +76,15 @@ const Home: React.FC = () => {
             >
               Your Gateway to Growth and Success
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-xl mb-8 opacity-90"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
             >
-              Join our thriving community of 5000+ tech enthusiasts, students, and professionals passionate about learning, networking, and career development.
+              Join our thriving community of 2000+ tech enthusiasts, students, and professionals passionate about learning, networking, and career development.
             </motion.p>
-            <motion.div 
+            <motion.div
               className="flex flex-wrap gap-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -93,8 +93,14 @@ const Home: React.FC = () => {
               <Link to="/about" className="btn bg-white text-orange-600 hover:bg-gray-100">
                 Learn More
               </Link>
-              <Link to="/login" ...>Join Now</Link>
+              <Link
+                to="/login"
+                className="btn bg-transparent border border-white text-white hover:bg-white hover:text-orange-600"
+              >
+                Join Now
+              </Link>
             </motion.div>
+
           </div>
         </div>
       </section>
@@ -103,17 +109,17 @@ const Home: React.FC = () => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <motion.div 
+            <motion.div
               className="p-6 rounded-lg shadow-sm bg-gradient-to-br from-orange-50 to-red-50"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h3 className="text-3xl md:text-4xl font-bold text-orange-600">5000+</h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-orange-600">2000+</h3>
               <p className="text-gray-600">Community Members</p>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="p-6 rounded-lg shadow-sm bg-gradient-to-br from-orange-50 to-red-50"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -123,7 +129,7 @@ const Home: React.FC = () => {
               <h3 className="text-3xl md:text-4xl font-bold text-orange-600">50+</h3>
               <p className="text-gray-600">Events Conducted</p>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="p-6 rounded-lg shadow-sm bg-gradient-to-br from-orange-50 to-red-50"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -133,7 +139,7 @@ const Home: React.FC = () => {
               <h3 className="text-3xl md:text-4xl font-bold text-orange-600">100+</h3>
               <p className="text-gray-600">Job Opportunities</p>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="p-6 rounded-lg shadow-sm bg-gradient-to-br from-orange-50 to-red-50"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -165,7 +171,7 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {services.map((service, index) => (
-              <motion.div 
+              <motion.div
                 key={service.title}
                 className="card p-6"
                 initial={{ opacity: 0, y: 20 }}
@@ -204,7 +210,7 @@ const Home: React.FC = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <motion.div 
+            <motion.div
               className="card p-6"
               {...fadeIn}
               transition={{ delay: 0.1 }}
@@ -221,7 +227,7 @@ const Home: React.FC = () => {
               </Link>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="card p-6"
               {...fadeIn}
               transition={{ delay: 0.2 }}
@@ -238,7 +244,7 @@ const Home: React.FC = () => {
               </Link>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="card p-6"
               {...fadeIn}
               transition={{ delay: 0.3 }}
@@ -255,7 +261,7 @@ const Home: React.FC = () => {
               </Link>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="card p-6"
               {...fadeIn}
               transition={{ delay: 0.4 }}
@@ -272,7 +278,7 @@ const Home: React.FC = () => {
               </Link>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="card p-6"
               {...fadeIn}
               transition={{ delay: 0.5 }}
@@ -289,7 +295,7 @@ const Home: React.FC = () => {
               </Link>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="card p-6 md:col-span-1 lg:col-span-1"
               {...fadeIn}
               transition={{ delay: 0.6 }}
@@ -312,7 +318,7 @@ const Home: React.FC = () => {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-orange-500 to-red-600 text-white">
         <div className="container mx-auto px-4 md:px-8 text-center">
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl font-bold mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -321,14 +327,14 @@ const Home: React.FC = () => {
           >
             Ready to Join Our Community?
           </motion.h2>
-          <motion.p 
+          <motion.p
             className="text-xl mb-10 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Connect with like-minded individuals, explore opportunities, and grow your skills alongside a 
+            Connect with like-minded individuals, explore opportunities, and grow your skills alongside a
             community of passionate learners and professionals.
           </motion.p>
           <motion.div
@@ -337,14 +343,12 @@ const Home: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <a 
-              href="https://chat.whatsapp.com/LxA5xaAdlKp3nvZmIGxLcp" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <Link
+              to="/login"
               className="btn bg-white text-orange-600 hover:bg-gray-100"
             >
               Join Now
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
