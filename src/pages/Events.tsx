@@ -428,7 +428,7 @@ const Events: React.FC = () => {
           If you're interested in hosting a workshop, webinar, or any other event for The Student Spot community,
           we'd love to collaborate with you. Share your expertise and help our members grow!
         </p>
-        <Link to="/contact" className="btn btn-primary">
+        <Link to="/login" className="btn btn-primary">
           Propose an Event
         </Link>
       </motion.section>
