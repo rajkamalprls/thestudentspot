@@ -247,6 +247,15 @@ const Contact: React.FC = () => {
                       <Linkedin className="w-5 h-5 mr-3" />
                       <span>LinkedIn</span>
                     </a>
+                    <a 
+                      href="https://x.com/the_studentspot" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center text-gray-700 hover:text-orange-600 transition-colors"
+                    >
+                      <Linkedin className="w-5 h-5 mr-3" />
+                      <span>Twitter(X)</span>
+                    </a>
                   </li>
                   <li>
                     <a 
