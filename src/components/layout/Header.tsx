@@ -12,11 +12,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -58,9 +54,9 @@ const Header: React.FC = () => {
               {item.title}
             </NavLink>
           ))}
-          <Link 
-            to="/login" 
-            className="btn btn-primary"
+          <Link
+            to="/login"
+            className="text-white bg-gradient-to-r from-orange-500 to-red-500 px-5 py-2 rounded-full shadow hover:opacity-90 transition"
           >
             Login
           </Link>
@@ -73,27 +69,30 @@ const Header: React.FC = () => {
 
         {/* Mobile Navigation */}
         <div
-          className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out md:hidden ${
+          className={`fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out md:hidden ${
             isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <div className="flex flex-col h-full justify-center items-center space-y-8 py-8">
+          <div className="absolute top-4 right-4">
+            <button onClick={toggleMenu} aria-label="Close menu">
+              <X size={28} />
+            </button>
+          </div>
+          <div className="flex flex-col items-center justify-center h-full space-y-8 px-6 pt-16">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={({ isActive }) => 
-                  `text-xl ${isActive ? activeClass : normalClass}`
-                }
+                className={({ isActive }) => `text-xl font-medium ${isActive ? activeClass : normalClass}`}
                 onClick={closeMenu}
                 end={item.path === '/'}
               >
                 {item.title}
               </NavLink>
             ))}
-            <Link 
-              to="/login" 
-              className="btn btn-primary mt-4"
+            <Link
+              to="/login"
+              className="text-white bg-gradient-to-r from-orange-500 to-red-500 px-6 py-2 rounded-full text-lg shadow-md"
               onClick={closeMenu}
             >
               Login
