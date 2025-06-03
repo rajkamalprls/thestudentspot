@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 
 // Components
 import Header from './components/layout/Header';
+import LoginPage from './pages/LoginPage';
 import Footer from './components/layout/Footer';
 
 // Pages
@@ -45,6 +46,7 @@ function App() {
             <Route path="/resources" element={<Resources />} />
             <Route path="/events" element={<Events />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<LoginPage />} />
 
             {/* Service Routes */}
             <Route path="/services/career-guidance" element={<CareerGuidance />} />
