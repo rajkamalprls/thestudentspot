@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-// Layout components
+// Components
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
-// Pages
-import HomePage from './pages/HomePage'; // from example 1
-import LoginPage from './pages/LoginPage'; // example 1
-import Dashboard from './pages/Dashboard'; // example 1
+// Pages from first snippet
+import LoginPage from './pages/LoginPage';
+import Dashboard from './pages/Dashboard'; // Your dashboard component
+import HomePage from './pages/HomePage'; // Your home component
+
+// Pages from second snippet
+import Home from './pages/Home';
 import About from './pages/About';
 import JobOpportunities from './pages/JobOpportunities';
 import Resources from './pages/Resources';
@@ -21,48 +24,48 @@ import CareerGuidance from './pages/services/CareerGuidance';
 import ResumeBuilding from './pages/services/ResumeBuilding';
 import Mentorship from './pages/services/Mentorship';
 
-// ScrollToTop component for scroll behavior on route change
+// Scroll to top on route change
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [location.pathname]);
   return null;
 }
 
-const App: React.FC = () => {
+function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">
-          <Routes>
-            {/* From example 1 */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+      {/* Header is always shown */}
+      <Header />
+      
+      <Routes>
+        {/* Routes from first snippet */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
 
-            {/* From example 2 */}
-            <Route path="/about" element={<About />} />
-            <Route path="/jobs" element={<JobOpportunities />} />
-            <Route path="/resources" element={<Resources />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/contact" element={<Contact />} />
+        {/* Routes from second snippet */}
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/jobs" element={<JobOpportunities />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/contact" element={<Contact />} />
 
-            {/* Service Routes */}
-            <Route path="/services/career-guidance" element={<CareerGuidance />} />
-            <Route path="/services/resume-building" element={<ResumeBuilding />} />
-            <Route path="/services/mentorship" element={<Mentorship />} />
+        {/* Service Routes */}
+        <Route path="/services/career-guidance" element={<CareerGuidance />} />
+        <Route path="/services/resume-building" element={<ResumeBuilding />} />
+        <Route path="/services/mentorship" element={<Mentorship />} />
 
-            {/* Catch all - 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+        {/* Catch all */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      <Footer />
     </Router>
   );
-};
+}
 
 export default App;
