@@ -6,8 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['firebase/auth'] // 👈 Tells Rollup to skip bundling this
+      external: ['firebase/auth'] // Optional for Netlify bundling issue
     }
   }
 });
-/// <reference types="vite/client" />
