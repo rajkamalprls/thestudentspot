@@ -231,9 +231,9 @@ const JobOpportunities: React.FC = () => {
                     <h3 className="text-xl font-bold">{job.title}</h3>
                     <div className="mt-2 md:mt-0">
                       <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${job.type === 'Full-time' ? 'bg-green-100 text-green-800' :
-                        job.type === 'Part-time' ? 'bg-blue-100 text-blue-800' :
-                          job.type === 'Contract' ? 'bg-purple-100 text-purple-800' :
-                            'bg-orange-100 text-orange-800'
+                          job.type === 'Part-time' ? 'bg-blue-100 text-blue-800' :
+                            job.type === 'Contract' ? 'bg-purple-100 text-purple-800' :
+                              'bg-orange-100 text-orange-800'
                         }`}>
                         {job.type}
                       </span>
@@ -294,25 +294,13 @@ const JobOpportunities: React.FC = () => {
           If you're looking to hire talented students and professionals, you can post your job or internship openings on The Student Spot.
           Connect with our community of 5000+ skilled candidates.
         </p>
-
-        <motion.div
-          className="flex flex-wrap justify-center gap-4"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        <a
+          href="/login"
+          className="btn btn-primary"
         >
-          <Link to="/login" className="btn btn-primary">
-            Post a Job
-          </Link>
-          <Link to="/contact" className="btn btn-secondary">
-            Contact Us
-          </Link>
-        </motion.div>
+          Post a Job
+        </a>
       </motion.div>
-      );
-};
-
     </div>
   );
 };
