@@ -93,14 +93,12 @@ const Home: React.FC = () => {
               <Link to="/about" className="btn bg-white text-orange-600 hover:bg-gray-100">
                 Learn More
               </Link>
-              <a 
-                href="https://chat.whatsapp.com/LxA5xaAdlKp3nvZmIGxLcp" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <Link 
+                to="/login"
                 className="btn bg-orange-600 text-white border border-white hover:bg-orange-700"
               >
-                Join Our Community
-              </a>
+                Join Now
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -191,168 +189,6 @@ const Home: React.FC = () => {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* What We Offer */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 md:px-8">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Offer</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The Student Spot is designed to bridge the gap between students, professionals, and recruiters.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <motion.div 
-              className="card p-6"
-              {...fadeIn}
-              transition={{ delay: 0.1 }}
-            >
-              <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mb-4">
-                <Users className="w-7 h-7 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Connect & Collaborate</h3>
-              <p className="text-gray-600 mb-4">
-                Network with like-minded individuals and work on exciting projects to build your portfolio and skills.
-              </p>
-              <Link to="/about" className="text-orange-600 font-medium inline-flex items-center hover:text-orange-700">
-                Learn more <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </motion.div>
-
-            <motion.div 
-              className="card p-6"
-              {...fadeIn}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mb-4">
-                <BookOpen className="w-7 h-7 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Learn & Grow</h3>
-              <p className="text-gray-600 mb-4">
-                Access top-tier resources, courses, and expert career tips to enhance your skills and knowledge.
-              </p>
-              <Link to="/resources" className="text-orange-600 font-medium inline-flex items-center hover:text-orange-700">
-                Explore resources <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </motion.div>
-
-            <motion.div 
-              className="card p-6"
-              {...fadeIn}
-              transition={{ delay: 0.3 }}
-            >
-              <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mb-4">
-                <Calendar className="w-7 h-7 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Events & Workshops</h3>
-              <p className="text-gray-600 mb-4">
-                Participate in exclusive events, workshops, and webinars led by industry experts and professionals.
-              </p>
-              <Link to="/events" className="text-orange-600 font-medium inline-flex items-center hover:text-orange-700">
-                View events <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </motion.div>
-
-            <motion.div 
-              className="card p-6"
-              {...fadeIn}
-              transition={{ delay: 0.4 }}
-            >
-              <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mb-4">
-                <Briefcase className="w-7 h-7 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Career Opportunities</h3>
-              <p className="text-gray-600 mb-4">
-                Explore internships, job opportunities, and insights from industry leaders to build your career path.
-              </p>
-              <Link to="/jobs" className="text-orange-600 font-medium inline-flex items-center hover:text-orange-700">
-                Find opportunities <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </motion.div>
-
-            <motion.div 
-              className="card p-6"
-              {...fadeIn}
-              transition={{ delay: 0.5 }}
-            >
-              <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mb-4">
-                <CheckCircle className="w-7 h-7 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Interview Preparation</h3>
-              <p className="text-gray-600 mb-4">
-                Receive expert guidance, practice problems, and ATS-friendly resume tips to ace your interviews.
-              </p>
-              <Link to="/resources" className="text-orange-600 font-medium inline-flex items-center hover:text-orange-700">
-                Get prepared <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </motion.div>
-
-            <motion.div 
-              className="card p-6 md:col-span-1 lg:col-span-1"
-              {...fadeIn}
-              transition={{ delay: 0.6 }}
-            >
-              <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mb-4">
-                <Users className="w-7 h-7 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">For Recruiters</h3>
-              <p className="text-gray-600 mb-4">
-                Connect with a talented pool of skilled candidates and share job openings with motivated professionals.
-              </p>
-              <Link to="/contact" className="text-orange-600 font-medium inline-flex items-center hover:text-orange-700">
-                Get in touch <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-red-600 text-white">
-        <div className="container mx-auto px-4 md:px-8 text-center">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Ready to Join Our Community?
-          </motion.h2>
-          <motion.p 
-            className="text-xl mb-10 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            Connect with like-minded individuals, explore opportunities, and grow your skills alongside a 
-            community of passionate learners and professionals.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <a 
-              href="https://chat.whatsapp.com/LxA5xaAdlKp3nvZmIGxLcp" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn bg-white text-orange-600 hover:bg-gray-100"
-            >
-              Join Now
-            </a>
-          </motion.div>
         </div>
       </section>
     </div>
