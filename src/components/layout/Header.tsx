@@ -19,6 +19,11 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+  }, [isOpen]);
+
   const navItems = [
     { title: 'Home', path: '/' },
     { title: 'About', path: '/about' },
@@ -56,34 +61,31 @@ const Header: React.FC = () => {
           ))}
           <Link
             to="/login"
-            className="text-white bg-gradient-to-r from-orange-500 to-red-500 px-5 py-2 rounded-full shadow hover:opacity-90 transition"
+            className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-4 py-2 rounded-full text-sm shadow hover:opacity-90 transition"
           >
             Login
           </Link>
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <button className="md:hidden z-50" onClick={toggleMenu} aria-label="Toggle menu">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Overlay */}
         <div
-          className={`fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out md:hidden ${
+          className={`fixed top-0 left-0 w-full h-full bg-white z-40 transition-transform duration-300 ease-in-out md:hidden ${
             isOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
-          <div className="absolute top-4 right-4">
-            <button onClick={toggleMenu} aria-label="Close menu">
-              <X size={28} />
-            </button>
-          </div>
-          <div className="flex flex-col items-center justify-center h-full space-y-8 px-6 pt-16">
+          <div className="flex flex-col justify-center items-center h-full space-y-8 px-4">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={({ isActive }) => `text-xl font-medium ${isActive ? activeClass : normalClass}`}
+                className={({ isActive }) =>
+                  `text-xl ${isActive ? activeClass : normalClass}`
+                }
                 onClick={closeMenu}
                 end={item.path === '/'}
               >
@@ -92,8 +94,8 @@ const Header: React.FC = () => {
             ))}
             <Link
               to="/login"
-              className="text-white bg-gradient-to-r from-orange-500 to-red-500 px-6 py-2 rounded-full text-lg shadow-md"
               onClick={closeMenu}
+              className="bg-gradient-to-r from-orange-400 to-red-500 text-white px-6 py-2 rounded-full text-lg shadow hover:opacity-90 transition"
             >
               Login
             </Link>
